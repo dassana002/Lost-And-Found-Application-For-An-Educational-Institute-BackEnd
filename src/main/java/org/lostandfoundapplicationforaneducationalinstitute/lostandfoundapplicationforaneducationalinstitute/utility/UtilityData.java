@@ -1,4 +1,0 @@
-package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.utility;
-
-public class UtilityData {
-}

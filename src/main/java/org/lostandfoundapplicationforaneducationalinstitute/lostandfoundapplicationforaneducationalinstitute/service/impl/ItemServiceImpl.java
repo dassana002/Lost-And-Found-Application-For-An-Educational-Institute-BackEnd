@@ -1,4 +1,0 @@
-package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.service.impl;
-
-public class ItemServiceImpl {
-}

@@ -1,4 +1,0 @@
-package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dao;
-
-public interface ItemDao {
-}
