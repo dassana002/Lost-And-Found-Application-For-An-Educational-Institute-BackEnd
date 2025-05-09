@@ -1,0 +1,4 @@
+package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.service;
+
+public interface ItemService {
+}

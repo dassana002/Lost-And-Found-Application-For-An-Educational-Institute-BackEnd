@@ -1,0 +1,4 @@
+package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dto;
+
+public class ItemDTO {
+}
