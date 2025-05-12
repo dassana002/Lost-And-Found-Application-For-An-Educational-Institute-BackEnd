@@ -12,7 +12,5 @@ public class ItemServiceImpl implements ItemService {
     public void saveItem(ItemDTO itemDTO) {
         itemDTO.setItemId(UtilityData.generateItemId());
         itemDTO.setCreatedDate(UtilityData.generateCurrentDate());
-
-
     }
 }
