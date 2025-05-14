@@ -23,6 +23,18 @@ public class UserController {
          return new ResponseEntity<>(userDTOS, HttpStatus.OK);
     }
 
+    @GetMapping("/getUser")
+    public ResponseEntity<UserDTO> getUser(@RequestParam String userId) {
+        try {
+            UserDTO userDTO = userService.getUser(userId);
+            return new ResponseEntity<>(userDTO, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @PostMapping("/save")
     public ResponseEntity<Void> saveUser(@RequestBody UserDTO user){
         userService.save(user);
@@ -33,6 +45,20 @@ public class UserController {
     public ResponseEntity<Void> updateUser(@RequestBody UserDTO user, @PathVariable String userId){
         try {
             userService.update(user, userId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable String userId){
+        try{
+            userService.delete(userId);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (RuntimeException e) {
             e.printStackTrace();

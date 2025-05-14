@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(UserDTO user, String userId) {
-        Optional<UserEntity> foundUser =  userDao.findById(userId);
+        Optional<UserEntity> foundUser = userDao.findById(userId);
 
         if (!foundUser.isPresent()) {
             throw new RuntimeException();
@@ -46,5 +46,21 @@ public class UserServiceImpl implements UserService {
         foundUser.get().setPassword(user.getPassword());
         foundUser.get().setRole(user.getRole());
 
+    }
+
+    @Override
+    public void delete(String userId) {
+        Optional<UserEntity> foundUser = userDao.findById(userId);
+
+        if (!foundUser.isPresent()) {
+            throw new RuntimeException();
+        }
+
+        userDao.deleteById(userId);
+    }
+
+    @Override
+    public UserDTO getUser(String userId) {
+        return null;
     }
 }

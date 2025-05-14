@@ -10,4 +10,8 @@ public interface UserService {
     List<UserDTO> getAll();
 
     void update(UserDTO user, String userId);
+
+    void delete(String userId);
+
+    UserDTO getUser(String userId);
 }
