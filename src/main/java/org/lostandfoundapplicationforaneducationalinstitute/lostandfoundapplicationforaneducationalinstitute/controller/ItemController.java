@@ -33,7 +33,21 @@ public class ItemController {
     public ResponseEntity<Void> updateItem(@RequestBody ItemDTO itemDTO ,@PathVariable String itemId) {
         try {
             itemService.updateItem(itemDTO, itemId);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @DeleteMapping("/{itemId}")
+    public ResponseEntity<Void> deleteItem(@PathVariable String itemId) {
+        try{
+            itemService.deleteItem(itemId);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (RuntimeException e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

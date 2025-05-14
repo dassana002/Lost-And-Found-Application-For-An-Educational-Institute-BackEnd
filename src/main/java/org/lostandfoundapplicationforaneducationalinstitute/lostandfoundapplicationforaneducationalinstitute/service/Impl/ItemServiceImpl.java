@@ -51,4 +51,15 @@ public class ItemServiceImpl implements ItemService {
 
         // Update item , @Transactional annotation used
     }
+
+    @Override
+    public void deleteItem(String itemId) {
+        Optional<ItemEntity> foundItem = itemDao.findById(itemId);
+
+        if (!foundItem.isPresent()) {
+            throw new RuntimeException();
+        }
+
+        itemDao.deleteById(itemId);
+    }
 }
