@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/Item")
 @RequiredArgsConstructor
@@ -15,14 +17,29 @@ public class ItemController {
 
     private final ItemService itemService;
 
-    @GetMapping("/getAllItems")
-    public String createItem() {
-        return "Items";
+    @GetMapping("/getAll")
+    public ResponseEntity<List<ItemDTO>> getAll() {
+        List<ItemDTO> dtos = itemService.getAll();
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
 
     @PostMapping(value = "/addItem", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> addItem(@RequestBody ItemDTO itemDTO) {
         itemService.saveItem(itemDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PatchMapping("/{itemId}")
+    public ResponseEntity<Void> updateItem(@RequestBody ItemDTO itemDTO ,@PathVariable String itemId) {
+        try {
+            itemService.updateItem(itemDTO, itemId);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }
