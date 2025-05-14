@@ -12,4 +12,8 @@ public class UtilityData {
     public static String generateItemId() {
         return "I -"+ UUID.randomUUID();
     }
+
+    public static String generateUserId() {
+        return "U -"+ UUID.randomUUID();
+    }
 }

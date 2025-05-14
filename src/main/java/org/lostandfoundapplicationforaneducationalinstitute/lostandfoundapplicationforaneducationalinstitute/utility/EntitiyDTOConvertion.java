@@ -2,7 +2,9 @@ package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplica
 
 import lombok.RequiredArgsConstructor;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dto.ItemDTO;
+import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dto.UserDTO;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.entity.ItemEntity;
+import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.entity.UserEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Component;
@@ -15,7 +17,7 @@ public class EntitiyDTOConvertion {
 
     private final ModelMapper modelMapper;
 
-//    Item
+    //    Item
     public ItemEntity toItemEntity(ItemDTO itemDTO) {
         return modelMapper.map(itemDTO, ItemEntity.class);
     }
@@ -24,7 +26,20 @@ public class EntitiyDTOConvertion {
         return modelMapper.map(itemEntity, ItemDTO.class);
     }
 
-    public List<ItemDTO> toItemDTOList(List<ItemEntity> itemEntityList) {
-        return modelMapper.map(itemEntityList, new TypeToken<List<ItemDTO>>() {}.getType());
+    public List<ItemDTO> toItemDTOList(List<ItemEntity> itemEntities) {
+        return modelMapper.map(itemEntities, new TypeToken<List<ItemDTO>>() {}.getType());
+    }
+
+    // User
+    public UserEntity toUserEntity(UserDTO userDTO) {
+        return modelMapper.map(userDTO, UserEntity.class);
+    }
+
+    public UserDTO toUserDTO(UserEntity userEntity) {
+        return modelMapper.map(userEntity, UserDTO.class);
+    }
+
+    public List<UserDTO> toUserDTOList(List<UserEntity> userEntities) {
+        return modelMapper.map(userEntities, new TypeToken<List<UserDTO>>() {}.getType());
     }
 }
