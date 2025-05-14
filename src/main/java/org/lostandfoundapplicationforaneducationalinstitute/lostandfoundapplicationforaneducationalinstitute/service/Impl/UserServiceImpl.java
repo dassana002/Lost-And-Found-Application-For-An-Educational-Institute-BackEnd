@@ -61,6 +61,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO getUser(String userId) {
-        return null;
+        Optional<UserEntity> foundUser = userDao.findById(userId);
+
+        if (!foundUser.isPresent()) {
+            throw new RuntimeException();
+        }
+
+        return entitiyDTOConvertion.toUserDTO(userDao.getReferenceById(userId));
     }
 }
