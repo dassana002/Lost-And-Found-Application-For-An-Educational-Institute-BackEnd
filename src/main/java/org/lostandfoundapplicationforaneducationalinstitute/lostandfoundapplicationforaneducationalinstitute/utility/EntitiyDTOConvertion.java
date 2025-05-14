@@ -2,8 +2,10 @@ package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplica
 
 import lombok.RequiredArgsConstructor;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dto.ItemDTO;
+import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dto.RequestDTO;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dto.UserDTO;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.entity.ItemEntity;
+import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.entity.RequestEntity;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.entity.UserEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -17,7 +19,7 @@ public class EntitiyDTOConvertion {
 
     private final ModelMapper modelMapper;
 
-    //    Item
+    // Item
     public ItemEntity toItemEntity(ItemDTO itemDTO) {
         return modelMapper.map(itemDTO, ItemEntity.class);
     }
@@ -41,5 +43,18 @@ public class EntitiyDTOConvertion {
 
     public List<UserDTO> toUserDTOList(List<UserEntity> userEntities) {
         return modelMapper.map(userEntities, new TypeToken<List<UserDTO>>() {}.getType());
+    }
+
+    // Request
+    public RequestEntity toRequestEntity(RequestDTO requestDTO) {
+        return modelMapper.map(requestDTO, RequestEntity.class);
+    }
+
+    public RequestDTO toRequestDTO(RequestEntity requestEntity) {
+        return modelMapper.map(requestEntity, RequestDTO.class);
+    }
+
+    public List<RequestDTO> toRequestDTOList(List<RequestEntity> requestEntities) {
+        return modelMapper.map(requestEntities, new TypeToken<List<RequestDTO>>() {}.getType());
     }
 }

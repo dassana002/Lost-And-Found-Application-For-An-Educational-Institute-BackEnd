@@ -16,4 +16,8 @@ public class UtilityData {
     public static String generateUserId() {
         return "U -"+ UUID.randomUUID();
     }
+
+    public static String generateRequestId() {
+        return "R -"+ UUID.randomUUID();
+    }
 }

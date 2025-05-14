@@ -1,0 +1,7 @@
+package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.service;
+
+import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dto.RequestDTO;
+
+public interface RequestService {
+    void saveRequest(RequestDTO requestDTO);
+}
