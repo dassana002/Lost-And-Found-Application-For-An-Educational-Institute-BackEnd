@@ -2,13 +2,14 @@ package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplica
 
 import lombok.RequiredArgsConstructor;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dao.RequestDao;
+import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dao.RequestDao;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dto.RequestDTO;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.service.RequestService;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.utility.EntitiyDTOConvertion;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.utility.UtilityData;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -24,4 +25,10 @@ public class RequestServiceImpl implements RequestService {
 
         requestDao.save(entityDTOConvertion.toRequestEntity(requestDTO));
    }
+
+    @Override
+    public List<RequestDTO> getAll() {
+        return entityDTOConvertion.toRequestDTOList(requestDao.findAll());
+    }
+
 }

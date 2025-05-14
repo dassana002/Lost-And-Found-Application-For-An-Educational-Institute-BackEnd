@@ -2,6 +2,10 @@ package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplica
 
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dto.RequestDTO;
 
+import java.util.List;
+
 public interface RequestService {
     void saveRequest(RequestDTO requestDTO);
+
+    List<RequestDTO> getAll();
 }
