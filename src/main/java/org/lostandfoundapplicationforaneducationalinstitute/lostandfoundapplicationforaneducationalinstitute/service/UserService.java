@@ -2,6 +2,12 @@ package org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplica
 
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.dto.UserDTO;
 
+import java.util.List;
+
 public interface UserService {
     void save(UserDTO user);
+
+    List<UserDTO> getAll();
+
+    void update(UserDTO user, String userId);
 }

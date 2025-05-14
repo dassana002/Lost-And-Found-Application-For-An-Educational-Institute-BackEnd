@@ -19,8 +19,8 @@ public class ItemController {
 
     @GetMapping("/getAll")
     public ResponseEntity<List<ItemDTO>> getAll() {
-        List<ItemDTO> dtos = itemService.getAll();
-        return new ResponseEntity<>(dtos, HttpStatus.OK);
+        List<ItemDTO> itemDTOS = itemService.getAll();
+        return new ResponseEntity<>(itemDTOS, HttpStatus.OK);
     }
 
     @PostMapping(value = "/addItem", consumes = MediaType.APPLICATION_JSON_VALUE)
