@@ -20,15 +20,16 @@ public class RequestEntity {
     @Column(name = "request_id")
     private String requestId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "item_id", nullable = false)
     @ToString.Exclude
     private ItemEntity item;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", nullable = false)
     @ToString.Exclude
     private UserEntity user;
+
     private RequestStatus status;
     private LocalDate requestDate;
 }

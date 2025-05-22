@@ -45,16 +45,4 @@ public class EntitiyDTOConvertion {
         return modelMapper.map(userEntities, new TypeToken<List<UserDTO>>() {}.getType());
     }
 
-    // Request
-    public RequestEntity toRequestEntity(RequestDTO requestDTO) {
-        return modelMapper.map(requestDTO, RequestEntity.class);
-    }
-
-    public RequestDTO toRequestDTO(RequestEntity requestEntity) {
-        return modelMapper.map(requestEntity, RequestDTO.class);
-    }
-
-    public List<RequestDTO> toRequestDTOList(List<RequestEntity> requestEntities) {
-        return modelMapper.map(requestEntities, new TypeToken<List<RequestDTO>>() {}.getType());
-    }
 }

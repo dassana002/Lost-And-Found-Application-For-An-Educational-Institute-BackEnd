@@ -10,6 +10,7 @@ import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicat
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.entity.UserEntity;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.service.RequestService;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.utility.EntitiyDTOConvertion;
+import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.utility.RequestMapping;
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.utility.UtilityData;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public void saveRequest(RequestDTO requestDTO) {
+        // Request Generate
         requestDTO.setRequestID(UtilityData.generateRequestId());
 
         // get Item and User
@@ -41,13 +43,15 @@ public class RequestServiceImpl implements RequestService {
 
         ///////////////////////////////////////////////
 
+        // Request Entity Generate
         requestDTO.setRequestDate(UtilityData.generateCurrentDate());
-        requestDao.save(entityDTOConvertion.toRequestEntity(requestDTO));
+
+        requestDao.save(RequestMapping.toRequestEntity(requestDTO, itemEntity, userEntity));
    }
 
     @Override
     public List<RequestDTO> getAll() {
-        return entityDTOConvertion.toRequestDTOList(requestDao.findAll());
+        return null;
     }
 
     @Override
