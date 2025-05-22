@@ -8,4 +8,6 @@ public interface RequestService {
     void saveRequest(RequestDTO requestDTO);
 
     List<RequestDTO> getAll();
+
+    void updateRequest(RequestDTO requestDTO, String requestId);
 }

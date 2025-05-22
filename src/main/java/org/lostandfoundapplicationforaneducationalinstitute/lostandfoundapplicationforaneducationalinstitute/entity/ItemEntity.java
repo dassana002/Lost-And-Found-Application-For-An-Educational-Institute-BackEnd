@@ -20,9 +20,11 @@ public class ItemEntity {
     @Id
     @Column(name = "item_id")
     private String itemId;
+
     private String name;
     private String description;
     private LocalDate createdDate;
+    private String location;
     private ItemStatus status;
 
     @OneToMany(mappedBy = "item",cascade = CascadeType.ALL,orphanRemoval = true)

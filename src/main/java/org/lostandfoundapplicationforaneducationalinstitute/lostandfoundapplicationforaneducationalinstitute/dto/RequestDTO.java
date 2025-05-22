@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @Data
 public class RequestDTO implements Serializable {
     private String requestID;
-    private String itemID;
-    private String userID;
+    private String item;
+    private String user;
     private RequestStatus status;
     private LocalDate requestDate;
 }

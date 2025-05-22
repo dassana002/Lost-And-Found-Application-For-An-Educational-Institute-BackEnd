@@ -29,7 +29,6 @@ public class RequestEntity {
     @JoinColumn(name = "user_id", nullable = false)
     @ToString.Exclude
     private UserEntity user;
-
     private RequestStatus status;
     private LocalDate requestDate;
 }
