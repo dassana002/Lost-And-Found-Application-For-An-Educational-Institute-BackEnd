@@ -8,13 +8,14 @@ import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicat
 import org.lostandfoundapplicationforaneducationalinstitute.lostandfoundapplicationforaneducationalinstitute.entity.UserEntity;
 import org.modelmapper.TypeToken;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RequestMapping {
 
     // Request
     public static RequestEntity toRequestEntity(RequestDTO requestDTO, ItemEntity itemEntity, UserEntity userEntity) {
-        RequestEntity requestEntity = new RequestEntity();
+        var requestEntity = new RequestEntity();
 
         requestEntity.setRequestId(requestDTO.getRequestID());
         requestEntity.setItem(itemEntity);
@@ -25,11 +26,31 @@ public class RequestMapping {
         return requestEntity;
     }
 
-    public RequestDTO toRequestDTO(RequestEntity requestEntity) {
-        return null;
+    public static RequestDTO toRequestDTO(RequestEntity requestEntity) {
+        var requestDTO = new RequestDTO();
+
+        requestDTO.setRequestID(requestEntity.getRequestId());
+        requestDTO.setItem(requestEntity.getItem().getItemId());
+        requestDTO.setUser(requestEntity.getUser().getUserId());
+        requestDTO.setStatus(requestEntity.getStatus());
+        requestDTO.setRequestDate(requestEntity.getRequestDate());
+
+        return requestDTO;
     }
 
-    public List<RequestDTO> toRequestDTOList(List<RequestEntity> requestEntities) {
-        return null;
+
+    public static List<RequestDTO> toRequestDTOList(List<RequestEntity> requestEntities) {
+        var lendingDTOList = new ArrayList<RequestDTO>();
+
+        for (var requestEntity : requestEntities) {
+            lendingDTOList.add(new RequestDTO(
+                requestEntity.getRequestId(),
+                requestEntity.getItem().getItemId(),
+                requestEntity.getUser().getUserId(),
+                requestEntity.getStatus(),
+                requestEntity.getRequestDate()
+            ));
+        }
+        return lendingDTOList;
     }
 }

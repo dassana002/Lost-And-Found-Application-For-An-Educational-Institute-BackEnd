@@ -51,7 +51,7 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public List<RequestDTO> getAll() {
-        return null;
+        return RequestMapping.toRequestDTOList(requestDao.findAll());
     }
 
     @Override
